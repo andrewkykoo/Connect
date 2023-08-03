@@ -13,6 +13,7 @@
 		B5A4E61A2A7C2FE80037634F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A4E6182A7C2FE80037634F /* LaunchScreen.storyboard */; };
 		B5A4E6252A7C33CA0037634F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E6242A7C33CA0037634F /* SearchViewController.swift */; };
 		B5A4E6272A7C3C720037634F /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E6262A7C3C720037634F /* DataModel.swift */; };
+		B5A4E62A2A7C51B20037634F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E6292A7C51B20037634F /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B5A4E61B2A7C2FE80037634F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A4E6242A7C33CA0037634F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B5A4E6262A7C3C720037634F /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		B5A4E6292A7C51B20037634F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		B5A4E60C2A7C2FE80037634F /* Connect */ = {
 			isa = PBXGroup;
 			children = (
+				B5A4E62B2A7C51CE0037634F /* DataService */,
 				B5A4E6232A7C305E0037634F /* Model */,
 				B5A4E6222A7C30580037634F /* View */,
 				B5A4E6212A7C304A0037634F /* ViewModel */,
@@ -89,6 +92,14 @@
 				B5A4E6262A7C3C720037634F /* DataModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B5A4E62B2A7C51CE0037634F /* DataService */ = {
+			isa = PBXGroup;
+			children = (
+				B5A4E6292A7C51B20037634F /* DataManager.swift */,
+			);
+			path = DataService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5A4E6252A7C33CA0037634F /* SearchViewController.swift in Sources */,
+				B5A4E62A2A7C51B20037634F /* DataManager.swift in Sources */,
 				B5A4E6272A7C3C720037634F /* DataModel.swift in Sources */,
 				B5A4E60E2A7C2FE80037634F /* AppDelegate.swift in Sources */,
 				B5A4E6102A7C2FE80037634F /* SceneDelegate.swift in Sources */,
