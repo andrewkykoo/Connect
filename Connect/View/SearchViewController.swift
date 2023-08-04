@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource {
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -44,9 +44,21 @@ class SearchViewController: UIViewController {
         return tableView
     }()
     
+    private let viewModel = SearchViewModel()
+    private var filteredChannels: [Channel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
+        tableView.dataSource = self
+        tableView.register(ChannelTableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.separatorStyle = .none
+        
+        setupUI()
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .systemBackground
         
         view.addSubview(titleLabel)
@@ -72,5 +84,29 @@ class SearchViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+    }
+    
+    // MARK: - UISearchBarDelegate
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            filteredChannels = []
+        } else {
+            filteredChannels = viewModel.filterChannels(with: searchText)
+        }
+        tableView.reloadData()
+    }
+
+    // MARK: - UITableViewDataSource
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredChannels.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ChannelTableViewCell
+        let channel = filteredChannels[indexPath.row]
+        cell.channelNameLabel.text = channel.name
+        return cell
     }
 }
