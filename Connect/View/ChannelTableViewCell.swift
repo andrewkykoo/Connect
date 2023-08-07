@@ -15,18 +15,28 @@ class ChannelTableViewCell: UITableViewCell {
         return label
     }()
     
+    let postCountLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        // Setup the cell's UI elements here
         contentView.addSubview(channelNameLabel)
+        contentView.addSubview(postCountLabel)
         
-        // Add constraints to position the label within the cell
         NSLayoutConstraint.activate([
             channelNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            channelNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             channelNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            channelNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            
+            postCountLabel.leadingAnchor.constraint(equalTo: channelNameLabel.leadingAnchor),
+            postCountLabel.topAnchor.constraint(equalTo: channelNameLabel.bottomAnchor, constant: 4), // Adjust the constant to add spacing between the labels
+            postCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            postCountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8), // Adjust the constant if needed
         ])
     }
     
@@ -36,13 +46,10 @@ class ChannelTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
 }

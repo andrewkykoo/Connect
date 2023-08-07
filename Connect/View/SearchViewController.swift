@@ -12,14 +12,14 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Connect"
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 40)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Find, reach out, and connect"
+        label.text = "search, discover, and network"
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +92,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         }
         tableView.reloadData()
     }
-
+    
     // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,6 +103,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ChannelTableViewCell
         let channel = filteredChannels[indexPath.row]
         cell.channelNameLabel.text = channel.name
+        
+        if let posts = channel.posts, !posts.isEmpty {
+            cell.postCountLabel.text = "\(posts.count) post\(posts.count == 1 ? "" : "s")"
+        } else {
+            cell.postCountLabel.text = "0 posts"
+        }
+        
         return cell
     }
     
