@@ -23,5 +23,12 @@ class ChannelPostsViewModel {
     private func fetchAllPosts() {
         allPosts = DataManager.shared.getAllPosts()
     }
+    
+    func filterPosts(with searchText: String) -> [Post] {
+        if searchText.isEmpty {
+            return filteredPosts
+        } else {
+            return filteredPosts.filter { $0.title.lowercased().contains(searchText.lowercased()) }
+        }
+    }
 }
-
