@@ -25,13 +25,16 @@ class DataManager {
         
         var user1 = User(firstName: "Andrew", lastName: "Koo", location: "New York, NY", posts: [])
         var user2 = User(firstName: "Usain", lastName: "Bolt", location: "Sherwood Content, Jamaica", posts: [])
+        var user6 = User(firstName: "Sean", lastName: "Maddison", location: "Brooklyn, NY", posts: [])
         
         var post1 = Post(channel: channel1, creator: user1, title: "We're looking for new members!", content: "Our group runs every Wednesday 7-9pm Central Park. Come out and run with us together! Come out and run with us together! Come out and run with us together!", createdDate: Date(), comments: [])
         var post2 = Post(channel: channel1, creator: user2, title: "Anybody interested in running every Monday morning?", content: "Looking for running buddies preferrably early mornings before work", createdDate: Date(), comments: [])
+        var post6 = Post(channel: channel1, creator: user6, title: "I am looking for running buddies (5K or more)", content: "NYC Full marathon is two months away! Let's get in shape by running every Saturday morning around Central Park and Brooklyn.", createdDate: Date(), comments: [])
         
         user1.posts = [post1]
         user2.posts = [post2]
-        channel1.posts = [post1, post2]
+        user6.posts = [post6]
+        channel1.posts = [post1, post2, post6]
 
         
         var channel2 = Channel(name: "#sundaysoccer", posts: [])
