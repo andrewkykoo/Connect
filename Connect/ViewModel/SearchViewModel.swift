@@ -9,11 +9,10 @@ import Foundation
 
 class SearchViewModel {
     
-    private let dataManager = DataManager.shared
     private var channels: [Channel] = []
     
     init() {
-        channels = dataManager.getChannels()
+        channels = DataManager.shared.getAllChannels()
     }
     
     func filterChannels(with searchText: String) -> [Channel] {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -36,11 +36,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        // TODO: Set up the delegate and data source for the table view
-        // tableView.delegate = self
-        // tableView.dataSource = self
-        
         return tableView
     }()
     
@@ -52,6 +47,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         searchBar.delegate = self
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(ChannelTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.separatorStyle = .none
         
@@ -108,5 +104,12 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         let channel = filteredChannels[indexPath.row]
         cell.channelNameLabel.text = channel.name
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedChannel = filteredChannels[indexPath.row]
+        let channelPostsViewModel = ChannelPostsViewModel(channel: selectedChannel)
+        let channelViewController = ChannelViewController(postsViewModel: channelPostsViewModel)
+        navigationController?.pushViewController(channelViewController, animated: true)
     }
 }
