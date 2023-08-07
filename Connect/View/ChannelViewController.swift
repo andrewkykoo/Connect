@@ -10,6 +10,7 @@ import UIKit
 class ChannelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private let postsViewModel: ChannelPostsViewModel
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +32,7 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
+        navigationItem.title = postsViewModel.channelName
     }
     
     private func setupUI() {

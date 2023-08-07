@@ -20,6 +20,10 @@ class ChannelPostsViewModel {
         self.fetchAllPosts()
     }
     
+    var channelName: String {
+        return channel.name
+    }
+    
     private func fetchAllPosts() {
         allPosts = DataManager.shared.getAllPosts()
     }
@@ -31,4 +35,6 @@ class ChannelPostsViewModel {
             return filteredPosts.filter { $0.title.lowercased().contains(searchText.lowercased()) }
         }
     }
+    
+    
 }

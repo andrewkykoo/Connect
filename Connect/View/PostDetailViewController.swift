@@ -67,13 +67,13 @@ class PostDetailViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         displayPostDetails()
+        navigationItem.title = viewModel.postChannel
     }
     
     // MARK: - UI Setup
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        title = viewModel.postChannel
         
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
