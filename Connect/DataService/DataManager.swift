@@ -26,7 +26,7 @@ class DataManager {
         var user1 = User(firstName: "Andrew", lastName: "Koo", location: "New York, NY", posts: [])
         var user2 = User(firstName: "Usain", lastName: "Bolt", location: "Sherwood Content, Jamaica", posts: [])
         
-        var post1 = Post(channel: channel1, creator: user1, title: "We're looking for new members!", content: "Our group runs every Wednesday 7-9pm Central Park. Come out and run with us together!", createdDate: Date(), comments: [])
+        var post1 = Post(channel: channel1, creator: user1, title: "We're looking for new members!", content: "Our group runs every Wednesday 7-9pm Central Park. Come out and run with us together! Come out and run with us together! Come out and run with us together!", createdDate: Date(), comments: [])
         var post2 = Post(channel: channel1, creator: user2, title: "Anybody interested in running every Monday morning?", content: "Looking for running buddies preferrably early mornings before work", createdDate: Date(), comments: [])
         
         user1.posts = [post1]

@@ -111,5 +111,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         let channelPostsViewModel = ChannelPostsViewModel(channel: selectedChannel)
         let channelViewController = ChannelViewController(postsViewModel: channelPostsViewModel)
         navigationController?.pushViewController(channelViewController, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

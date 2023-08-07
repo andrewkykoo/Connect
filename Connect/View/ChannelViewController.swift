@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChannelViewController: UIViewController, UITableViewDataSource {
+class ChannelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private let postsViewModel: ChannelPostsViewModel
     private let tableView: UITableView = {
@@ -29,6 +29,7 @@ class ChannelViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         setupUI()
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
     }
     
@@ -55,6 +56,13 @@ class ChannelViewController: UIViewController, UITableViewDataSource {
         let post = postsViewModel.filteredPosts[indexPath.row]
         cell.configure(with: post)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedPost = postsViewModel.filteredPosts[indexPath.row]
+        let postDetailViewController = PostDetailViewController(post: selectedPost)
+        navigationController?.pushViewController(postDetailViewController, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

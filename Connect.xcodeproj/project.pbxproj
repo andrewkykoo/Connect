@@ -19,6 +19,8 @@
 		B5A4E6352A81524A0037634F /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E6342A81524A0037634F /* ChannelViewController.swift */; };
 		B5A4E6372A8152700037634F /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E6362A8152700037634F /* PostTableViewCell.swift */; };
 		B5A4E6392A8152970037634F /* ChannelPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E6382A8152970037634F /* ChannelPostsViewModel.swift */; };
+		B5A4E63B2A817CAC0037634F /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E63A2A817CAC0037634F /* PostDetailViewController.swift */; };
+		B5A4E63D2A8191F60037634F /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E63C2A8191F60037634F /* PostDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		B5A4E6342A81524A0037634F /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		B5A4E6362A8152700037634F /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		B5A4E6382A8152970037634F /* ChannelPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelPostsViewModel.swift; sourceTree = "<group>"; };
+		B5A4E63A2A817CAC0037634F /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		B5A4E63C2A8191F60037634F /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 			children = (
 				B5A4E62C2A7C58630037634F /* SearchViewModel.swift */,
 				B5A4E6382A8152970037634F /* ChannelPostsViewModel.swift */,
+				B5A4E63C2A8191F60037634F /* PostDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -97,6 +102,7 @@
 				B5A4E62E2A7C78C50037634F /* ChannelTableViewCell.swift */,
 				B5A4E6342A81524A0037634F /* ChannelViewController.swift */,
 				B5A4E6362A8152700037634F /* PostTableViewCell.swift */,
+				B5A4E63A2A817CAC0037634F /* PostDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -190,7 +196,9 @@
 				B5A4E62D2A7C58630037634F /* SearchViewModel.swift in Sources */,
 				B5A4E6252A7C33CA0037634F /* SearchViewController.swift in Sources */,
 				B5A4E62A2A7C51B20037634F /* DataManager.swift in Sources */,
+				B5A4E63B2A817CAC0037634F /* PostDetailViewController.swift in Sources */,
 				B5A4E62F2A7C78C50037634F /* ChannelTableViewCell.swift in Sources */,
+				B5A4E63D2A8191F60037634F /* PostDetailViewModel.swift in Sources */,
 				B5A4E6272A7C3C720037634F /* DataModel.swift in Sources */,
 				B5A4E60E2A7C2FE80037634F /* AppDelegate.swift in Sources */,
 				B5A4E6392A8152970037634F /* ChannelPostsViewModel.swift in Sources */,
