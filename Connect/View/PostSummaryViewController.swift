@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChannelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PostSummaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private let postsViewModel: ChannelPostsViewModel
     

@@ -12,7 +12,7 @@ class PostTableViewCell: UITableViewCell {
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemGray5
+//        view.backgroundColor = .systemGray6
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         return view
@@ -50,6 +50,7 @@ class PostTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        setupSelectedBackgroundView()
         
         contentView.addSubview(containerView)
         containerView.addSubview(nameLabel)
@@ -86,6 +87,7 @@ class PostTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+//        setupSelectedBackgroundView()
     }
     
     override func awakeFromNib() {
@@ -95,6 +97,12 @@ class PostTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+//    private func setupSelectedBackgroundView() {
+//        let selectedBackgroundView = UIView()
+//        selectedBackgroundView.backgroundColor = UIColor.systemMint
+//        self.selectedBackgroundView = selectedBackgroundView
+//    }
     
     func configure(with post: Post) {
         nameLabel.text = "\(post.creator.firstName) \(post.creator.lastName)"

@@ -34,9 +34,9 @@ class ChannelTableViewCell: UITableViewCell {
             channelNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             
             postCountLabel.leadingAnchor.constraint(equalTo: channelNameLabel.leadingAnchor),
-            postCountLabel.topAnchor.constraint(equalTo: channelNameLabel.bottomAnchor, constant: 4), // Adjust the constant to add spacing between the labels
+            postCountLabel.topAnchor.constraint(equalTo: channelNameLabel.bottomAnchor, constant: 4),
             postCountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            postCountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8), // Adjust the constant if needed
+            postCountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
         ])
     }
     

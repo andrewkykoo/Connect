@@ -116,7 +116,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedChannel = filteredChannels[indexPath.row]
         let channelPostsViewModel = ChannelPostsViewModel(channel: selectedChannel)
-        let channelViewController = ChannelViewController(postsViewModel: channelPostsViewModel)
+        let channelViewController = PostSummaryViewController(postsViewModel: channelPostsViewModel)
         navigationController?.pushViewController(channelViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
