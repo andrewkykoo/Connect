@@ -23,9 +23,9 @@ class DataManager {
     private func loadMockData() {
         var channel1 = Channel(name: "#socialrunning", posts: [])
         
-        var user1 = User(firstName: "Andrew", lastName: "Koo", location: "New York, NY", posts: [])
-        var user2 = User(firstName: "Usain", lastName: "Bolt", location: "Sherwood Content, Jamaica", posts: [])
-        var user6 = User(firstName: "Sean", lastName: "Maddison", location: "Brooklyn, NY", posts: [])
+        var user1 = User(firstName: "Andrew", lastName: "Koo", location: "New York, NY", email: "connect-ios-app-test@gmail.com", instagram: "https://www.instagram.com/apple/", facebook: "https://www.facebook.com/apple", twitter: "https://twitter.com/apple?lang=en", posts: [])
+        var user2 = User(firstName: "Usain", lastName: "Bolt", location: "Sherwood Content, Jamaica", email: "connect-ios-app-test@gmail.com", instagram: "https://www.instagram.com/apple/", facebook: "https://www.facebook.com/apple", twitter: "https://twitter.com/apple?lang=en",posts: [])
+        var user6 = User(firstName: "Sean", lastName: "Maddison", location: "Brooklyn, NY", email: "connect-ios-app-test@gmail.com", instagram: "https://www.instagram.com/apple/", facebook: "https://www.facebook.com/apple", twitter: "https://twitter.com/apple?lang=en",posts: [])
         
         var post1 = Post(channel: channel1, creator: user1, title: "We're looking for new members!", content: "Our group runs every Wednesday 7-9pm Central Park. Come out and run with us together! Come out and run with us together! Come out and run with us together!", createdDate: Date(), comments: [])
         var post2 = Post(channel: channel1, creator: user2, title: "Anybody interested in running every Monday morning?", content: "Looking for running buddies preferrably early mornings before work", createdDate: Date(), comments: [])
@@ -39,8 +39,8 @@ class DataManager {
         
         var channel2 = Channel(name: "#sundaysoccer", posts: [])
         
-        var user3 = User(firstName: "Kevin", lastName: "De Bruyne", location: "Manchester, UK", posts: [])
-        var user4 = User(firstName: "Ruben", lastName: "Dias", location: "Manchester, UK", posts: [])
+        var user3 = User(firstName: "Kevin", lastName: "De Bruyne", location: "Manchester, UK", email: "connect-ios-app-test@gmail.com", instagram: "https://www.instagram.com/apple/", facebook: "https://www.facebook.com/apple", twitter: "https://twitter.com/apple?lang=en",posts: [])
+        var user4 = User(firstName: "Ruben", lastName: "Dias", location: "Manchester, UK", email: "connect-ios-app-test@gmail.com", instagram: "https://www.instagram.com/apple/", facebook: "https://www.facebook.com/apple", twitter: "https://twitter.com/apple?lang=en",posts: [])
         
         var post3 = Post(channel: channel2, creator: user3, title: "I am looking for a competitive league team", content: "I played at college level, play midfield, and can participate in weekly trainings.", createdDate: Date(), comments: [])
         var post4 = Post(channel: channel2, creator: user4, title: "Our team needs a midfielder for Sunday game", content: "Looking for a midfielder for our league game. The game starts at 9:00am.", createdDate: Date(), comments: [])
