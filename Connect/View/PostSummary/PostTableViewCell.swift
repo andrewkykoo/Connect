@@ -58,7 +58,7 @@ class PostTableViewCell: UITableViewCell {
         containerView.addSubview(titleLabel)
         contentView.addSubview(postDateLabel)
         
-        let padding: CGFloat = 16
+        let padding: CGFloat = 5
         
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
@@ -70,7 +70,7 @@ class PostTableViewCell: UITableViewCell {
             nameLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             nameLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             
-            locationLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            locationLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2),
             locationLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             locationLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             
@@ -78,7 +78,7 @@ class PostTableViewCell: UITableViewCell {
             postDateLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             postDateLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             
-            titleLabel.topAnchor.constraint(equalTo: postDateLabel.bottomAnchor, constant: 10),
+            titleLabel.topAnchor.constraint(equalTo: postDateLabel.bottomAnchor, constant: 2),
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             titleLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),

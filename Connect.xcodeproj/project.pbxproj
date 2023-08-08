@@ -98,11 +98,9 @@
 		B5A4E6222A7C30580037634F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B5A4E6242A7C33CA0037634F /* SearchViewController.swift */,
-				B5A4E62E2A7C78C50037634F /* ChannelTableViewCell.swift */,
-				B5A4E6342A81524A0037634F /* PostSummaryViewController.swift */,
-				B5A4E6362A8152700037634F /* PostTableViewCell.swift */,
-				B5A4E63A2A817CAC0037634F /* PostDetailViewController.swift */,
+				B5A4E6402A82CB340037634F /* PostDetail */,
+				B5A4E63F2A82CB250037634F /* PostSummary */,
+				B5A4E63E2A82CB1A0037634F /* Search */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -121,6 +119,32 @@
 				B5A4E6292A7C51B20037634F /* DataManager.swift */,
 			);
 			path = DataService;
+			sourceTree = "<group>";
+		};
+		B5A4E63E2A82CB1A0037634F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B5A4E6242A7C33CA0037634F /* SearchViewController.swift */,
+				B5A4E62E2A7C78C50037634F /* ChannelTableViewCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		B5A4E63F2A82CB250037634F /* PostSummary */ = {
+			isa = PBXGroup;
+			children = (
+				B5A4E6342A81524A0037634F /* PostSummaryViewController.swift */,
+				B5A4E6362A8152700037634F /* PostTableViewCell.swift */,
+			);
+			path = PostSummary;
+			sourceTree = "<group>";
+		};
+		B5A4E6402A82CB340037634F /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B5A4E63A2A817CAC0037634F /* PostDetailViewController.swift */,
+			);
+			path = PostDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

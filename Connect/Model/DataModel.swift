@@ -37,9 +37,5 @@ struct User {
     let firstName: String
     let lastName: String
     let location: String
-    let email: String
-    let instagram: String?
-    let facebook: String?
-    let twitter: String?
     var posts: [Post]?
 }
