@@ -46,6 +46,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         super.viewDidLoad()
         
         searchBar.delegate = self
+        customizeSearchBarAppearance()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ChannelTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -63,7 +64,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
@@ -72,14 +73,18 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
             
             searchBar.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 20),
-            searchBar.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            searchBar.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+    }
+    
+    private func customizeSearchBarAppearance() {
+        searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
     }
     
     // MARK: - UISearchBarDelegate
