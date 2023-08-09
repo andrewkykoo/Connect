@@ -39,11 +39,24 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         return tableView
     }()
     
+    let createChannelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Create a channel", for: .normal)
+        button.setTitleColor(.link, for: .normal)
+        button.addTarget(self, action: #selector(createChannelButtonTapped), for: .touchUpInside)
+        button.isHidden = true // Initially hidden
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    
     private let viewModel = SearchViewModel()
     private var filteredChannels: [Channel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("ChannelAdded"), object: nil)
         
         searchBar.delegate = self
         customizeSearchBarAppearance()
@@ -55,6 +68,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         setupUI()
     }
     
+    @objc private func reloadData() {
+        searchBar(searchBar, textDidChange: searchBar.text ?? "")
+    }
+    
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
@@ -62,6 +79,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         view.addSubview(subtitleLabel)
         view.addSubview(searchBar)
         view.addSubview(tableView)
+        view.addSubview(createChannelButton)
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -76,10 +94,15 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
+            createChannelButton.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
+            createChannelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+
         ])
     }
     
@@ -87,13 +110,42 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
     }
     
+    @objc private func createChannelButtonTapped() {
+        let alertController = UIAlertController(title: "Create a Channel", message: "Enter the new channel name:", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Channel name"
+        }
+        let createChannelAction = UIAlertAction(title: "Create", style: .default) { [weak self, weak alertController] _ in
+            guard let channelName = alertController?.textFields?.first?.text, !channelName.isEmpty else { return }
+            self?.createChannel(named: channelName)
+        }
+        alertController.addAction(createChannelAction)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alertController, animated: true)
+    }
+    
+    private func createChannel(named name: String) {
+        let newChannel = Channel(name: "#\(name)", posts: [])
+        DataManager.shared.addChannel(newChannel)
+        NotificationCenter.default.post(name: Notification.Name("ChannelAdded"), object: nil)
+        searchBar.text = ""
+        searchBar(searchBar, textDidChange: "")
+        
+        let channelPostsViewModel = ChannelPostsViewModel(channel: newChannel)
+        let channelViewController = PostSummaryViewController(postsViewModel: channelPostsViewModel)
+        
+        navigationController?.pushViewController(channelViewController, animated: true)
+    }
+    
     // MARK: - UISearchBarDelegate
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             filteredChannels = []
+            createChannelButton.isHidden = true
         } else {
             filteredChannels = viewModel.filterChannels(with: searchText)
+            createChannelButton.isHidden = filteredChannels.isEmpty == false
         }
         tableView.reloadData()
     }

@@ -70,4 +70,8 @@ class DataManager {
         }
         return allPosts
     }
+    
+    func addChannel(_ channel: Channel) {
+        channels.append(channel)
+    }
 }

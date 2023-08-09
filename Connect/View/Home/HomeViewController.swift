@@ -32,17 +32,25 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return tableView
     }()
     
-    private let channels: [Channel] = DataManager.shared.getAllChannels()
+    private var channels: [Channel] {
+        return DataManager.shared.getAllChannels()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("ChannelAdded"), object: nil)
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ChannelTableViewCell.self, forCellReuseIdentifier: "ChannelCell")
         tableView.separatorStyle = .none
         
         setupUI()
+    }
+    
+    @objc private func reloadData() {
+        tableView.reloadData()
     }
     
     private func setupUI() {
