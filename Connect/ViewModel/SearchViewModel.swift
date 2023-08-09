@@ -16,6 +16,9 @@ class SearchViewModel {
     }
     
     func filterChannels(with searchText: String) -> [Channel] {
+        
+        let channels = DataManager.shared.getAllChannels()
+        
         if searchText.isEmpty {
             return channels
         } else {
