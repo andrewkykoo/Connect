@@ -22,10 +22,10 @@ class TabBarController: UITabBarController {
         searchViewController.title = "Search"
         searchViewController.tabBarItem.image = UIImage(systemName: "magnifyingglass")
         
-        // Create View Controller
+        // Channel View Controller
         let createViewController = UIViewController()
-        createViewController.title = "Create"
-        createViewController.tabBarItem.image = UIImage(systemName: "plus.circle")
+        createViewController.title = "Channel"
+        createViewController.tabBarItem.image = UIImage(systemName: "globe")
         
         // Account View Controller
         let accountViewController = UIViewController()

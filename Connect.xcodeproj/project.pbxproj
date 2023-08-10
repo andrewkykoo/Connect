@@ -105,7 +105,7 @@
 				B5D07D712A83EFA9009C6933 /* Navigation */,
 				B5D07D6E2A83ED1E009C6933 /* Home */,
 				B5A4E6402A82CB340037634F /* PostDetail */,
-				B5A4E63F2A82CB250037634F /* PostSummary */,
+				B5A4E63F2A82CB250037634F /* Channel */,
 				B5A4E63E2A82CB1A0037634F /* Search */,
 			);
 			path = View;
@@ -136,13 +136,13 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		B5A4E63F2A82CB250037634F /* PostSummary */ = {
+		B5A4E63F2A82CB250037634F /* Channel */ = {
 			isa = PBXGroup;
 			children = (
 				B5A4E6342A81524A0037634F /* ChannelViewController.swift */,
 				B5A4E6362A8152700037634F /* PostTableViewCell.swift */,
 			);
-			path = PostSummary;
+			path = Channel;
 			sourceTree = "<group>";
 		};
 		B5A4E6402A82CB340037634F /* PostDetail */ = {
