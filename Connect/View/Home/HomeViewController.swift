@@ -108,7 +108,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedChannel = channels[indexPath.row]
         let channelPostsViewModel = ChannelPostsViewModel(channel: selectedChannel)
-        let channelViewController = PostSummaryViewController(postsViewModel: channelPostsViewModel)
+        let channelViewController = ChannelViewController(postsViewModel: channelPostsViewModel)
         navigationController?.pushViewController(channelViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
