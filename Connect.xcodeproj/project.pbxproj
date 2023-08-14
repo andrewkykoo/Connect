@@ -22,7 +22,7 @@
 		B5A4E63B2A817CAC0037634F /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E63A2A817CAC0037634F /* PostDetailViewController.swift */; };
 		B5A4E63D2A8191F60037634F /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E63C2A8191F60037634F /* PostDetailViewModel.swift */; };
 		B5D07D702A83ED2C009C6933 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D07D6F2A83ED2C009C6933 /* HomeViewController.swift */; };
-		B5D07D742A83EFD8009C6933 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D07D732A83EFD8009C6933 /* TabBarController.swift */; };
+		B5FC84002A8AC9E9003B3588 /* CreateChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FC83FF2A8AC9E9003B3588 /* CreateChannelViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +43,7 @@
 		B5A4E63A2A817CAC0037634F /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		B5A4E63C2A8191F60037634F /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		B5D07D6F2A83ED2C009C6933 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		B5D07D732A83EFD8009C6933 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B5FC83FF2A8AC9E9003B3588 /* CreateChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChannelViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 		B5A4E6222A7C30580037634F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B5D07D712A83EFA9009C6933 /* Navigation */,
+				B5FC83FE2A8AC9CB003B3588 /* CreateChannel */,
 				B5D07D6E2A83ED1E009C6933 /* Home */,
 				B5A4E6402A82CB340037634F /* PostDetail */,
 				B5A4E63F2A82CB250037634F /* Channel */,
@@ -161,12 +161,12 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		B5D07D712A83EFA9009C6933 /* Navigation */ = {
+		B5FC83FE2A8AC9CB003B3588 /* CreateChannel */ = {
 			isa = PBXGroup;
 			children = (
-				B5D07D732A83EFD8009C6933 /* TabBarController.swift */,
+				B5FC83FF2A8AC9E9003B3588 /* CreateChannelViewController.swift */,
 			);
-			path = Navigation;
+			path = CreateChannel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +243,7 @@
 				B5A4E6252A7C33CA0037634F /* SearchViewController.swift in Sources */,
 				B5A4E62A2A7C51B20037634F /* DataManager.swift in Sources */,
 				B5A4E63B2A817CAC0037634F /* PostDetailViewController.swift in Sources */,
+				B5FC84002A8AC9E9003B3588 /* CreateChannelViewController.swift in Sources */,
 				B5A4E62F2A7C78C50037634F /* ChannelTableViewCell.swift in Sources */,
 				B5A4E63D2A8191F60037634F /* PostDetailViewModel.swift in Sources */,
 				B5A4E6272A7C3C720037634F /* DataModel.swift in Sources */,
@@ -250,7 +251,6 @@
 				B5A4E6392A8152970037634F /* ChannelPostsViewModel.swift in Sources */,
 				B5A4E6352A81524A0037634F /* ChannelViewController.swift in Sources */,
 				B5A4E6102A7C2FE80037634F /* SceneDelegate.swift in Sources */,
-				B5D07D742A83EFD8009C6933 /* TabBarController.swift in Sources */,
 				B5D07D702A83ED2C009C6933 /* HomeViewController.swift in Sources */,
 				B5A4E6372A8152700037634F /* PostTableViewCell.swift in Sources */,
 			);

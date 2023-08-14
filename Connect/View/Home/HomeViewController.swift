@@ -7,13 +7,7 @@
 
 import UIKit
 
-protocol TabBarDelegate: AnyObject {
-    func didSelectChannel(_ channel: Channel)
-}
-
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    weak var tabBarDelegate: TabBarDelegate?
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -38,6 +32,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return tableView
     }()
     
+    let searchButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.tintColor = .systemBlue
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(openSearchViewController), for: .touchUpInside)
+        return button
+    }()
+    
     private var channels: [Channel] {
         return DataManager.shared.getAllChannels()
     }
@@ -59,12 +62,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.reloadData()
     }
     
+    
+    @objc private func openSearchViewController() {
+        let searchViewController = SearchViewController()
+        navigationController?.pushViewController(searchViewController, animated: true)
+    }
+    
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)
         view.addSubview(tableView)
+        view.addSubview(searchButton)
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -79,6 +89,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            searchButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            searchButton.widthAnchor.constraint(equalToConstant: 30),
+            searchButton.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
     
@@ -114,13 +129,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedChannel = channels[indexPath.row]
-        tabBarDelegate?.didSelectChannel(selectedChannel)
 
         let channelViewController = ChannelViewController(channel: selectedChannel)
-        channelViewController.title = "Channel"
-        channelViewController.tabBarItem.image = UIImage(systemName: "globe")
-        channelViewController.tabBarItem.selectedImage = UIImage(systemName: "globe.fill")
-
         navigationController?.pushViewController(channelViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
