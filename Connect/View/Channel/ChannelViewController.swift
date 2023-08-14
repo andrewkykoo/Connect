@@ -9,7 +9,10 @@ import UIKit
 
 class ChannelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private let postsViewModel: ChannelPostsViewModel
+    private var postsViewModel: ChannelPostsViewModel
+    private let channel: Channel
+    var channelSelectionHandler: ((Channel) -> Void)?
+
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -17,8 +20,9 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
         return tableView
     }()
     
-    init(postsViewModel: ChannelPostsViewModel) {
-        self.postsViewModel = postsViewModel
+    init(channel: Channel) {
+        self.channel = channel
+        self.postsViewModel = ChannelPostsViewModel(channel: channel)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,6 +37,10 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
         navigationItem.title = postsViewModel.channelName
+    }
+    
+    func didSelectChannel(_ channel: Channel) {
+        channelSelectionHandler?(channel)
     }
     
     private func setupUI() {

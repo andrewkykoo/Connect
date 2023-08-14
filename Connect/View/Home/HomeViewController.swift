@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol TabBarDelegate: AnyObject {
+    func didSelectChannel(_ channel: Channel)
+}
+
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    weak var tabBarDelegate: TabBarDelegate?
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -95,8 +101,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.alpha = 0
 
         UIView.animate(
-            withDuration: 0.5,
-            delay: 0.05 * Double(indexPath.row),
+            withDuration: 1.5,
+            delay: 0.5 * Double(indexPath.row),
             options: [.curveEaseInOut],
             animations: {
                 cell.transform = .identity
@@ -106,9 +112,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let selectedChannel = channels[indexPath.row]
-        let channelPostsViewModel = ChannelPostsViewModel(channel: selectedChannel)
-        let channelViewController = ChannelViewController(postsViewModel: channelPostsViewModel)
+        tabBarDelegate?.didSelectChannel(selectedChannel)
+
+        let channelViewController = ChannelViewController(channel: selectedChannel)
+        channelViewController.title = "Channel"
+        channelViewController.tabBarItem.image = UIImage(systemName: "globe")
+        channelViewController.tabBarItem.selectedImage = UIImage(systemName: "globe.fill")
+
         navigationController?.pushViewController(channelViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

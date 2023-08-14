@@ -9,6 +9,10 @@ import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
+    weak var tabBarDelegate: TabBarDelegate?
+    private let viewModel = SearchViewModel()
+    private var filteredChannels: [Channel] = []
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Connect"
@@ -49,10 +53,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         return button
     }()
 
-    
-    private let viewModel = SearchViewModel()
-    private var filteredChannels: [Channel] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -132,7 +132,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         searchBar(searchBar, textDidChange: "")
         
         let channelPostsViewModel = ChannelPostsViewModel(channel: newChannel)
-        let channelViewController = ChannelViewController(postsViewModel: channelPostsViewModel)
+        let channelViewController = ChannelViewController(channel: newChannel)
         
         navigationController?.pushViewController(channelViewController, animated: true)
     }
@@ -171,9 +171,15 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let selectedChannel = filteredChannels[indexPath.row]
-        let channelPostsViewModel = ChannelPostsViewModel(channel: selectedChannel)
-        let channelViewController = ChannelViewController(postsViewModel: channelPostsViewModel)
+        tabBarDelegate?.didSelectChannel(selectedChannel)
+
+        let channelViewController = ChannelViewController(channel: selectedChannel)
+        channelViewController.title = "Channel"
+        channelViewController.tabBarItem.image = UIImage(systemName: "globe")
+        channelViewController.tabBarItem.selectedImage = UIImage(systemName: "globe.fill")
+
         navigationController?.pushViewController(channelViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
