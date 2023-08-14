@@ -27,7 +27,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     let createChannelButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Create a channel", for: .normal)
+        button.setTitle("Channel not found.. Let's create one!", for: .normal)
         button.setTitleColor(.link, for: .normal)
         button.addTarget(self, action: #selector(createChannelButtonTapped), for: .touchUpInside)
         button.isHidden = true // Initially hidden
