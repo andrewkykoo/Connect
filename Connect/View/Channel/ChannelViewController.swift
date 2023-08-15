@@ -10,10 +10,9 @@ import UIKit
 class ChannelViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private var postsViewModel: ChannelPostsViewModel
-    private let channel: Channel
+    private let selectedChannel: Channel
     var channelSelectionHandler: ((Channel) -> Void)?
 
-    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,13 +26,13 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @objc private func createPostButtonTapped() {
         // Handle the button tap here
-        let createPostViewController = CreatePostViewController() // Instantiate your CreatePostViewController
+        let createPostViewController = CreatePostViewController(selectedChannel: selectedChannel)
         navigationController?.pushViewController(createPostViewController, animated: true)
     }
     
-    init(channel: Channel) {
-        self.channel = channel
-        self.postsViewModel = ChannelPostsViewModel(channel: channel)
+    init(selectedChannel: Channel) {
+        self.selectedChannel = selectedChannel
+        self.postsViewModel = ChannelPostsViewModel(channel: selectedChannel)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,12 +42,31 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("PostAdded"), object: nil)
         setupUI()
         setupNavigationBar()
+        let backButton = UIBarButtonItem(
+            image: UIImage(systemName: "house.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(backButtonTapped)
+        )
+        navigationItem.leftBarButtonItem = backButton
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
         navigationItem.title = postsViewModel.channelName
+    }
+    
+    @objc private func reloadData() {
+          // Update your table view data to include the new post
+          tableView.reloadData()
+      }
+    
+    @objc private func backButtonTapped() {
+        if let navigationController = navigationController {
+            navigationController.popToRootViewController(animated: true)
+        }
     }
     
     func didSelectChannel(_ channel: Channel) {

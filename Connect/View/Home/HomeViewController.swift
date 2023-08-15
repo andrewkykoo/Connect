@@ -49,6 +49,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("ChannelAdded"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("PostAdded"), object: nil)
+
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -61,7 +63,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @objc private func reloadData() {
         tableView.reloadData()
     }
-    
     
     @objc private func openSearchViewController() {
         let searchViewController = SearchViewController()
@@ -130,7 +131,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let selectedChannel = channels[indexPath.row]
 
-        let channelViewController = ChannelViewController(channel: selectedChannel)
+        let channelViewController = ChannelViewController(selectedChannel: selectedChannel)
         navigationController?.pushViewController(channelViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
