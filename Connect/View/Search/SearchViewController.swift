@@ -40,6 +40,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("ChannelAdded"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("PostAdded"), object: nil)
+        
         searchBar.delegate = self
         customizeSearchBarAppearance()
         tableView.dataSource = self
@@ -130,7 +132,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedChannel = filteredChannels[indexPath.row]
-        let channelViewController = ChannelViewController(channel: selectedChannel)
+        let channelViewController = ChannelViewController(selectedChannel: selectedChannel)
         navigationController?.pushViewController(channelViewController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -144,7 +146,7 @@ extension SearchViewController: CreateChannelDelegate {
         searchBar.text = ""
         searchBar(searchBar, textDidChange: "")
     
-        let channelViewController = ChannelViewController(channel: newChannel)
+        let channelViewController = ChannelViewController(selectedChannel: newChannel)
         
         navigationController?.pushViewController(channelViewController, animated: true)
     }

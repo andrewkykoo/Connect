@@ -9,8 +9,18 @@ import UIKit
 
 class CreatePostViewController: UIViewController, UITextViewDelegate {
     
+    private let selectedChannel: Channel
     private let textFieldHeight: CGFloat = 40
     private let textViewHeight: CGFloat = 150
+    
+    init(selectedChannel: Channel) {
+        self.selectedChannel = selectedChannel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private let subjectLabel: UILabel = {
         let label = UILabel()
@@ -94,9 +104,19 @@ class CreatePostViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc private func submitButtonTapped() {
-        // Handle the submit button tap here
-        // Retrieve values from text fields and create a new post
-        // You can use delegate pattern or any other communication method to notify the ChannelViewController about the new post
+        guard let subject = subjectTextField.text, !subject.isEmpty,
+              let content = contentTextView.text, !content.isEmpty else {
+            let alertController = UIAlertController(title: "Missing Info", message: "Please fill in both fields", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+            return
+        }
+        
+        let newPost = Post(channel: selectedChannel, creator: User(firstName: "John", lastName: "Wick", location: "New York, NY"), title: subject, content: content, createdDate: Date(), comments: [])
+        
+        DataManager.shared.addPost(newPost, to: selectedChannel)
+        NotificationCenter.default.post(name: Notification.Name("PostAdded"), object: nil)
+        let newChannelViewController = ChannelViewController(selectedChannel: selectedChannel)
+            navigationController?.pushViewController(newChannelViewController, animated: true)
     }
     
     // MARK: - UITextViewDelegate

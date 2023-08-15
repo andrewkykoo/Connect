@@ -74,4 +74,10 @@ class DataManager {
     func addChannel(_ channel: Channel) {
         channels.append(channel)
     }
+    
+    func addPost(_ post: Post, to channel: Channel) {
+        if let channelIndex = channels.firstIndex(where: { $0.id == channel.id }) {
+            channels[channelIndex].posts?.append(post)
+        }
+    }
 }
