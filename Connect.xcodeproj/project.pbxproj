@@ -23,6 +23,7 @@
 		B5A4E63D2A8191F60037634F /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A4E63C2A8191F60037634F /* PostDetailViewModel.swift */; };
 		B5D07D702A83ED2C009C6933 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D07D6F2A83ED2C009C6933 /* HomeViewController.swift */; };
 		B5FC84002A8AC9E9003B3588 /* CreateChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FC83FF2A8AC9E9003B3588 /* CreateChannelViewController.swift */; };
+		B5FC84032A8AEACE003B3588 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FC84022A8AEACE003B3588 /* CreatePostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		B5A4E63C2A8191F60037634F /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		B5D07D6F2A83ED2C009C6933 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B5FC83FF2A8AC9E9003B3588 /* CreateChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChannelViewController.swift; sourceTree = "<group>"; };
+		B5FC84022A8AEACE003B3588 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		B5A4E6222A7C30580037634F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B5FC84012A8AEAC1003B3588 /* CreatePost */,
 				B5FC83FE2A8AC9CB003B3588 /* CreateChannel */,
 				B5D07D6E2A83ED1E009C6933 /* Home */,
 				B5A4E6402A82CB340037634F /* PostDetail */,
@@ -167,6 +170,14 @@
 				B5FC83FF2A8AC9E9003B3588 /* CreateChannelViewController.swift */,
 			);
 			path = CreateChannel;
+			sourceTree = "<group>";
+		};
+		B5FC84012A8AEAC1003B3588 /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				B5FC84022A8AEACE003B3588 /* CreatePostViewController.swift */,
+			);
+			path = CreatePost;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +260,7 @@
 				B5A4E6272A7C3C720037634F /* DataModel.swift in Sources */,
 				B5A4E60E2A7C2FE80037634F /* AppDelegate.swift in Sources */,
 				B5A4E6392A8152970037634F /* ChannelPostsViewModel.swift in Sources */,
+				B5FC84032A8AEACE003B3588 /* CreatePostViewController.swift in Sources */,
 				B5A4E6352A81524A0037634F /* ChannelViewController.swift in Sources */,
 				B5A4E6102A7C2FE80037634F /* SceneDelegate.swift in Sources */,
 				B5D07D702A83ED2C009C6933 /* HomeViewController.swift in Sources */,

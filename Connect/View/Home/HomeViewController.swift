@@ -116,8 +116,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.alpha = 0
 
         UIView.animate(
-            withDuration: 1.5,
-            delay: 0.5 * Double(indexPath.row),
+            withDuration: 0.5,
+            delay: 0.1 * Double(indexPath.row),
             options: [.curveEaseInOut],
             animations: {
                 cell.transform = .identity

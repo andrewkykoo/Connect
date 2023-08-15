@@ -20,6 +20,17 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
         return tableView
     }()
     
+    private func setupNavigationBar() {
+        let createPostButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(createPostButtonTapped))
+        navigationItem.rightBarButtonItem = createPostButton
+    }
+
+    @objc private func createPostButtonTapped() {
+        // Handle the button tap here
+        let createPostViewController = CreatePostViewController() // Instantiate your CreatePostViewController
+        navigationController?.pushViewController(createPostViewController, animated: true)
+    }
+    
     init(channel: Channel) {
         self.channel = channel
         self.postsViewModel = ChannelPostsViewModel(channel: channel)
@@ -33,6 +44,7 @@ class ChannelViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupNavigationBar()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
