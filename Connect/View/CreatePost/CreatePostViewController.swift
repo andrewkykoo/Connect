@@ -50,7 +50,7 @@ class CreatePostViewController: UIViewController, UITextViewDelegate {
     private let contentTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 17)
-        textView.textColor = .black // Set the text color
+        textView.textColor = .label 
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 1.0
         textView.layer.cornerRadius = 5.0
